@@ -71,4 +71,18 @@ void readRSSI(){
   //back to code
 }
 
+void AngleAverage(){
+              AddedAngles = 0;
+         for (int i = 0 ;i < LenArray; i++){//Get the max Rssi value and the angle for that value
+                AddedAngles = ScanAngleArray[i] + AddedAngles;
+            }
+         AveragedAngle = AddedAngles/5;
+
+         Serial.println("AveragedAngle");
+         Serial.println(AveragedAngle);
+
+}
+
+
+
 
