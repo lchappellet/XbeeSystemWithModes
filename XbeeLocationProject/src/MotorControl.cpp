@@ -4,12 +4,16 @@
  *  Created on: Apr 8, 2017
  *      Author: London
  */
-
+/*psudocode
+ * Get to a degree then measure the heading 5 times and take the EMA each time. Then go on.
+ * If Horizontal motion happens(vehicle is turning) designate when to take the measurement again.
+ * Maybe when we have designated the highest rssi frequency we should then try to get an accurate heading of that direction as well.
+ *
+ */
 #include "MotorControl.h"
 
 MotorControl::MotorControl() {
 	// TODO Auto-generated constructor stub
-
 }
 
 MotorControl::~MotorControl() {
@@ -17,7 +21,7 @@ MotorControl::~MotorControl() {
 }
 
 void CompassAntennaBearing(){
-   strip.clear(); // clear all pixels
+  strip.clear(); // clear all pixels
   Vector norm = compass.readNormalize();
 
   // Calculate heading
@@ -43,12 +47,16 @@ void CompassAntennaBearing(){
     }
 
   headingDegrees = heading * 180/M_PI;
+
+
  // Output
   Serial.print(" Heading = ");
   Serial.print(heading);
   Serial.print(" Degress = ");
   Serial.print(headingDegrees);
   Serial.println();
+
+
 
 /*
  // To Fix rotation speed of HMC5883L Compass module
@@ -182,7 +190,9 @@ Serial.println(myEnc.read());
 // NowAngle = currentPos;
 // shortScanNowAngle = currentPos;
 //currentPos = cartCurrent[0];
-NowAngle = headingDegrees;
+NowAngle = headingDegrees; // given by the compass. It would be better to use the compass reading to get the value of what the encoder is giving.
+							// That way we can use the encoder to keep track of exactly what angle the system is pointing and the compass to keep the true heading.
+
 shortScanNowAngle = headingDegrees;
 return;
 
@@ -235,8 +245,10 @@ digitalWrite(in2, currentDir);
 if(abs(pidControlSignal) > 120){
   pidControlSignal = 120;
 }
+
 //Serial.println(pidControlSignal);
 analogWrite(enA, abs(pidControlSignal));
+
 //  analogWrite(enB, abs(pidControlSignal));
 
 //  unsigned long currentMillis = millis();
