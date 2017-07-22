@@ -11,11 +11,11 @@
 class GpsLocationCalc {
 public:
 	//**** GPS CODE Variables
-
-	SoftwareSerial mySerial(53, 52); //Arduino UnoInitialize SoftwareSerial, and tell it you will be connecting through pins 7 and 8
-	Adafruit_GPS
+// softwareSerial will need to only be done on the arduino
+	//SoftwareSerial mySerial(53, 52); //Arduino UnoInitialize SoftwareSerial, and tell it you will be connecting through pins 7 and 8
+	Adafruit_GPS  // needs the adafruit GPS library.
 	GPS (&mySerial); //Create GPS object
-
+//Testing git hub to see if it notices this line
 	//#define mySerial Serial1 //Necessary for Arduino Mega
 	//Adafruit_GPS GPS(&mySerial); //Necessary for Arduino Mega
 
