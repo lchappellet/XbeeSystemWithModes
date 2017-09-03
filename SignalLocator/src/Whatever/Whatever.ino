@@ -1,20 +1,28 @@
 // MOTOR CONTROL ARDUINO
+
+// #include "hal.h"
 #include "arduino_hal.h"
 #include "MotorControl.h"
-//#include <Encoder.h>
 
-ArduinoHal hal(12, 11, 9);
-MotorControl motor;
+using namespace XbeeSystem;
 
+ArduinoHal hal;
+MotorControl* motor;
 
 void setup() {
   // put your setup code here, to run once:
-//  motor = new MotorControl();
+  hal.init(11, 9);
+  motor = new MotorControl();
+  motor->hal_ = &hal;
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  motor.move_motor(50);
-  delay(500);
-  motor.move_motor(0);
+  motor->move_motor(100);
+  delay(50);
+  motor->move_motor(0);
+  // delay(1000);
+  // motor->move_motor(-200);
+  // motor->move_motor(0);
+  // delay(50);
 }

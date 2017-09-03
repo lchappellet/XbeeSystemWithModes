@@ -10,14 +10,15 @@
  * Maybe when we have designated the highest rssi frequency we should then try to get an accurate heading of that direction as well.
  *
  */
+#include <Arduino.h>
+
 #include "MotorControl.h"
 #include "arduino_hal.h"
 #include "hal.h"
-// #include <Arduino.h>
 
 MotorControl::MotorControl() {
 	// TODO Auto-generated constructor stub
-  hal_ = <IHal*> XbeeSystem::ArduinoHal(12, 15);
+  // hal_ = dynamic_cast<IHal *> XbeeSystem::ArduinoHal(12, 15);
 }
 
 MotorControl::~MotorControl() {
@@ -35,7 +36,7 @@ double MotorControl::controlpid(double encoderValue, double targetDestination){
  double  pidControlValue= 0;
 
  //How long since we last calculated
- unsigned long timeNow = millis();
+ unsigned long timeNow = hal_->millis();
  double deltaTime = (double)(timeNow - previousTime);
 
  //Compute all the working error variables
@@ -64,14 +65,16 @@ return  pidControlValue;
 void MotorControl::move_motor(double pidControlvalue1){
 
 if(pidControlvalue1>=0){
-  currentDir = LOW;
+  currentDir = 0;
+  // currentDir = LOW;
 }
 if(pidControlvalue1<0){
-  currentDir = HIGH;
+  currentDir = 1;
+  // currentDir = HIGH;
 
 }
-hal_.digitalWrite(in1, !currentDir);
-hal_.digitalWrite(in2, currentDir);
+hal_->digitalWrites(in1, !currentDir);
+hal_->digitalWrites(in2, currentDir);
 //  digitalWrite(in1, currentDir);       //move counterclockwise
 //  digitalWrite(in2, !currentDir);
 
@@ -82,7 +85,7 @@ if(abs(pidControlvalue1) > 120){
 }
 
 //Serial.println(pidControlSignal);
-hal_.analogWrite(enA, abs(pidControlvalue1));
+hal_->analogWrites(enA, abs(pidControlvalue1));
 
 return;
 }

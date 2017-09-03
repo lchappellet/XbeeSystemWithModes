@@ -6,12 +6,15 @@
 
 namespace XbeeSystem {
 
-  class ArduinoHal : IHal {
+  class ArduinoHal : public IHal {
     public:
+      ArduinoHal();
       ArduinoHal(int dig_output_pin, int analog_output_pin);
+      void init(int dig_pin, int analog_pin);
       void serial();
-      void digitalWrite(bool high_voltage);
-      void analogWrite(double value);
+      void digitalWrites(int pin, bool high_voltage);
+      void analogWrites(int pin, double value);
+      unsigned long millis();
 
     private:
       int dig_output_pin_;
