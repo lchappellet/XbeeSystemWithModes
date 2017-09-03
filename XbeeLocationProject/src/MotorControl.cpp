@@ -20,23 +20,7 @@ MotorControl::~MotorControl() {
 	// TODO Auto-generated destructor stub
 }
 
-/**************
-double readEncoders(){
 
-//Read Encoder and calculate time
-//gain* encoder where gain = 360/ 1 revolution of encoder counts
-//cartCurrent[0] = (.147*myEnc.read()); // gives value in degrees of where system is located for 437rpm motor
-// cartCurrent[0] = (0.002667*myEnc.read()); // gives value in degrees of where system is located for 12rpm motor using OD(outerdiameters)
-cartCurrent[0] = (0.002476 * myEnc.read()); // gives value in degrees of where system is located for 12rpm motor using PD(Pitch diameters)//Best***
-currentPos = cartCurrent[0];
-//Serial.println("Encoders");
-//Serial.println(currentPos);
-//Serial.println(myEnc.read());
-
-return;
-
-
-}
 Helps to calibrate the motor and home the device so encoder values start in a direction.
 void CalibrateMotor180(){
 	//this is usually done at the beginning when the antenna is turned on.
