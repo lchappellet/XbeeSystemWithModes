@@ -12,14 +12,16 @@
 
 class Encoder_XBee_system {
 public:
-	  //Encoder Object
-  Encoder& myEnc;
-
-	double cartCurrent[0];
-	double currentPos = 0;
-	double read_encoder();
 	Encoder_XBee_system();
 	virtual ~Encoder_XBee_system();
+
+  double read_encoder();
+
+  double cartCurrent = 0;
+  double currentPos = 0;
+  
+private:
+  Encoder* myEnc;// = Encoder(5, 5);
 };
 
 #endif /* ENCODERXBEESYSTEM_H_ */

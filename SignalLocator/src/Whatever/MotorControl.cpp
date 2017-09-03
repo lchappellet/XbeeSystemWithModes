@@ -11,10 +11,13 @@
  *
  */
 #include "MotorControl.h"
-#include <Arduino.h>
+#include "arduino_hal.h"
+#include "hal.h"
+// #include <Arduino.h>
 
 MotorControl::MotorControl() {
 	// TODO Auto-generated constructor stub
+  hal_ = <IHal*> XbeeSystem::ArduinoHal(12, 15);
 }
 
 MotorControl::~MotorControl() {
@@ -67,8 +70,8 @@ if(pidControlvalue1<0){
   currentDir = HIGH;
 
 }
-digitalWrite(in1, !currentDir);
-digitalWrite(in2, currentDir);
+hal_.digitalWrite(in1, !currentDir);
+hal_.digitalWrite(in2, currentDir);
 //  digitalWrite(in1, currentDir);       //move counterclockwise
 //  digitalWrite(in2, !currentDir);
 
@@ -79,20 +82,7 @@ if(abs(pidControlvalue1) > 120){
 }
 
 //Serial.println(pidControlSignal);
-analogWrite(enA, abs(pidControlvalue1));
-
-//  analogWrite(enB, abs(pidControlSignal));
-
-//  unsigned long currentMillis = millis();
-//
-//
-//  if(currentMillis - previousMillis > interval) {
-//    // save the last time you blinked the LED
-//    previousMillis = currentMillis;
-//     analogWrite(enA, 0);
-//     analogWrite(enB, 0);
-//     delay(100);
-//  }
+hal_.analogWrite(enA, abs(pidControlvalue1));
 
 return;
 }

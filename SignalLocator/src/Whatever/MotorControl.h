@@ -8,13 +8,19 @@
 #ifndef MOTORCONTROL_H_
 #define MOTORCONTROL_H_
 
+#include "hal.h"
+
 class MotorControl {
 public:
+    MotorControl();
+    virtual ~MotorControl();
+
     // arduino setup pins
 	  //motor control variables
 	    const int enA = 12;
 	    const int in1 = 11;
 	    const int in2 = 9;
+    XbeeSystem::IHal* hal_;
 
 
 	 	// Location to move to
@@ -49,10 +55,6 @@ public:
 	    double controlpid(double encoderValue, double targetDestination);
 	    void move_motor(double pidControlvalue1);
 	    void CalibrateMotor180();
-	    //
-
-	MotorControl();
-	virtual ~MotorControl();
 };
 
 #endif /* MOTORCONTROL_H_ */

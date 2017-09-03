@@ -1,8 +1,11 @@
 // MOTOR CONTROL ARDUINO
 #include "arduino_hal.h"
 #include "MotorControl.h"
+//#include <Encoder.h>
 
+ArduinoHal hal(12, 11, 9);
 MotorControl motor;
+
 
 void setup() {
   // put your setup code here, to run once:

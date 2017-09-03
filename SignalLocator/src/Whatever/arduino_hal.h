@@ -2,13 +2,13 @@
 #define ARDUINO_HAL_H_
 
 // #import "arduino.h"
-#import "hal.h"
+#include "hal.h"
 
 namespace XbeeSystem {
 
   class ArduinoHal : IHal {
     public:
-      ArduinoHal();
+      ArduinoHal(int dig_output_pin, int analog_output_pin);
       void serial();
       void digitalWrite(bool high_voltage);
       void analogWrite(double value);
