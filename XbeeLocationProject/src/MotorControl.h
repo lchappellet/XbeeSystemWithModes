@@ -10,31 +10,23 @@
 
 class MotorControl {
 public:
-
+    // arduino setup pins
 	  //motor control variables
 	    const int enA = 12;
 	    const int in1 = 11;
 	    const int in2 = 9;
-
 	    //Encoder Object
 	 	    Encoder myEnc(18, 19);
-
-
-
-
-
-
+	// variables
 	    //Time Variables
 	    unsigned long lastTimePid;
-
-
 
 	    //Current Position
 	    double currentPos = 0;
 
 	    //Encoder position variable
 	    long encoderPosPrev  = -999;
-
+  //PID variables
 	    //Control Variables
 	    double kp = 10;
 	    double ki = 0;
@@ -43,12 +35,11 @@ public:
 	    double errSum = 0;
 	    double pidControlSignal = 0;
 	    double zero = 0;        // helps with tracking setpoint value
-
-
-
 	    bool currentDir;
 	    bool before = true;
 
+
+	    //Do I need these?
 	    //Target Set Point Variable
 	    const double firstValue = 160;
 	    double setPointTarget = firstValue;
@@ -63,8 +54,8 @@ public:
 
 	    //Feed Forward Variables
 	    //float cartPrev[2] = {0,0};
-	    float cartCurrent[3] = {0,0,0};
-
+	    //float cartCurrent[3] = {0,0,0};
+	    // This should be another function
 	    // Variables to be created for CalibrateMotor180
 	    int CalZeroPosition = 0; // variable for the zero calibration encoder reading
 	    int CalOneEightyPosition = 0;//Varibale to hold 180 encoder reading
