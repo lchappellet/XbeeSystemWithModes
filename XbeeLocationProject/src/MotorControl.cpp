@@ -19,8 +19,13 @@ MotorControl::MotorControl() {
 MotorControl::~MotorControl() {
 	// TODO Auto-generated destructor stub
 }
+<<<<<<< HEAD
 
 void readEncoders() {
+=======
+/**************
+double readEncoders(){
+>>>>>>> f6a433ec256607e6ceee834323a0a44a6e0676a8
 
 //Read Encoder and calculate time
 //gain* encoder where gain = 360/ 1 revolution of encoder counts
@@ -34,6 +39,7 @@ currentPos = cartCurrent[0];
 
 return;
 
+<<<<<<< HEAD
 }
 Helps to calibrate the motor and home the device so encoder values start in a direction.
 void CalibrateMotor180(){
@@ -44,15 +50,39 @@ void controlpid(double setPointTarget) {
 //How long since we last calculated
 unsigned long timeNow = millis();
 double deltaTime = (double) (timeNow - lastTimePid);
+=======
+}*/
+
+double MotorControl::controlpid(double encoderValue, double targetDestination){
+//  pidControlValue
+ double  pidControlValue= 0;
+
+ //How long since we last calculated
+ unsigned long timeNow = millis();
+ double deltaTime = (double)(timeNow - previousTime);
+
+ //Compute all the working error variables
+ double error = targetDestination - currentPos;
+ errSum += (error * deltaTime);
+>>>>>>> f6a433ec256607e6ceee834323a0a44a6e0676a8
 
 //Compute all the working error variables
 double error = setPointTarget - currentPos;
 errSum += (error * deltaTime);
 
+<<<<<<< HEAD
 double dErr = (error - lastErr) / deltaTime;
 
 /*Compute PID Output*/
 pidControlSignal = kp * error + ki * errSum + kd * dErr;
+=======
+ /*Compute PID Output*/
+ pidControlValue = kp * error + ki * errSum + kd * dErr;
+
+ //Remember some variables for next time
+ lastErr = error;
+ previousTime = timeNow;
+>>>>>>> f6a433ec256607e6ceee834323a0a44a6e0676a8
 
 //Remember some variables for next time
 lastErr = error;
@@ -66,9 +96,10 @@ lastTimePid = timeNow;
 //  Serial.print(ki*errSum);
 //  Serial.print(" Kd:");
 //  Serial.println(kd*dErr);
-return;
+return  pidControlValue;
 }
 
+<<<<<<< HEAD
 void moveWheels_PID() {
 	//calculate pid = force to move
 		//get encoder values.
@@ -84,18 +115,32 @@ if (pidControlSignal >= 0) {
 }
 if (pidControlSignal < 0) {
 	currentDir = HIGH;
+=======
+void MotorControl::moveWheels(double pidControlvalue1){
+
+if(pidControlvalue1>=0){
+  currentDir = LOW;
+}
+if(pidControlvalue1<0){
+  currentDir = HIGH;
+>>>>>>> f6a433ec256607e6ceee834323a0a44a6e0676a8
 }
 digitalWrite(in1, !currentDir);
 digitalWrite(in2, currentDir);
 //  digitalWrite(in1, currentDir);       //move counterclockwise
 //  digitalWrite(in2, !currentDir);
 
+<<<<<<< HEAD
 if (abs(pidControlSignal) > 120) {
 	pidControlSignal = 120;
+=======
+if(abs(pidControlvalue1) > 120){
+  pidControlvalue1 = 120;
+>>>>>>> f6a433ec256607e6ceee834323a0a44a6e0676a8
 }
 
 //Serial.println(pidControlSignal);
-analogWrite(enA, abs(pidControlSignal));
+analogWrite(enA, abs(pidControlvalue1));
 
 //  analogWrite(enB, abs(pidControlSignal));
 
