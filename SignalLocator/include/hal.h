@@ -4,9 +4,10 @@
 namespace XbeeSystem {
 
   class IHal {
-    virtual void digitalWrite(int pin_number, bool high_voltage);
     virtual void analogWrite(int pin_number, double value);
-  }
+    virtual void digitalWrite(int pin_number, bool high_voltage);
+    virtual void serial();
+  };
 
 }
 
