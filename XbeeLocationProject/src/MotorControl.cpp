@@ -21,17 +21,10 @@ MotorControl::~MotorControl() {
 }
 
 
-Helps to calibrate the motor and home the device so encoder values start in a direction.
+//Helps to calibrate the motor and home the device so encoder values start in a direction.
 void CalibrateMotor180(){
 	//this is usually done at the beginning when the antenna is turned on.
 }
-void controlpid(double setPointTarget) {
-
-//How long since we last calculated
-unsigned long timeNow = millis();
-double deltaTime = (double) (timeNow - lastTimePid);
-
-}*/
 
 double MotorControl::controlpid(double encoderValue, double targetDestination){
 //  pidControlValue
@@ -42,7 +35,7 @@ double MotorControl::controlpid(double encoderValue, double targetDestination){
  double deltaTime = (double)(timeNow - previousTime);
 
  //Compute all the working error variables
- double error = targetDestination - currentPos;
+ double error = targetDestination - encoderValue;
  errSum += (error * deltaTime);
 
 double dErr = (error - lastErr) / deltaTime;
@@ -67,7 +60,7 @@ return  pidControlValue;
 }
 
 
-void MotorControl::moveWheels(double pidControlvalue1){
+void MotorControl::move_motor(double pidControlvalue1){
 
 if(pidControlvalue1>=0){
   currentDir = LOW;

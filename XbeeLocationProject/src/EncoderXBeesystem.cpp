@@ -12,7 +12,7 @@ Encoder_XBee_system::Encoder_XBee_system() {
 
 }
 
-double read_encoder::Encoder(){
+double read_encoder::Encoder_XBee_system(){
 
 	//Read Encoder and calculate time
 	//gain* encoder where gain = 360/ 1 revolution of encoder counts

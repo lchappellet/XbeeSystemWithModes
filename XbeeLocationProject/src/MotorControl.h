@@ -15,8 +15,6 @@ public:
 	    const int enA = 12;
 	    const int in1 = 11;
 	    const int in2 = 9;
-	    //Encoder Object
-	 	    Encoder myEnc(18, 19);
 
 
 	 	// Location to move to
@@ -24,7 +22,7 @@ public:
 
 
 	    //Current Position
-	    double currentPos = 0;
+	    double encoderValue = 0;
 
 	    //Encoder position variable
 	    long encoderPosPrev  = -999;
@@ -46,6 +44,11 @@ public:
 
 	    float cartCurrent[3] = {0,0,0};
 
+
+	    // functions
+	    double controlpid(double encoderValue, double targetDestination);
+	    void move_motor(double pidControlvalue1);
+	    void CalibrateMotor180();
 	    //
 
 	MotorControl();
