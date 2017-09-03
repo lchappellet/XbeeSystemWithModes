@@ -2,7 +2,7 @@
 #define ARDUINO_HAL_H_
 
 // #import "arduino.h"
-#import "hal.h"
+#include "hal.h"
 
 namespace XbeeSystem {
 
