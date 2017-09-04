@@ -20,6 +20,7 @@ public:
 	    const int enA = 12;
 	    const int in1 = 11;
 	    const int in2 = 9;
+
     XbeeSystem::IHal* hal_;
 
 
