@@ -25,7 +25,11 @@ using namespace XbeeSystem;
     digitalWrite(pin, high_voltage);
   }
 
-  void ArduinoHal::serial() {
+  void ArduinoHal::digitalReads(int readpin){
+    digitalRead(readpin);
+  }
+
+  void ArduinoHal::Serials() {
     //todo fill in
   }
 

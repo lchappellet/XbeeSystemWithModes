@@ -11,6 +11,7 @@ namespace XbeeSystem {
       void init(int dig_pin, int analog_pin);
       void serial();
       void digitalWrites(int pin, bool high_voltage);
+      void digitalReads(int readpin);
       void analogWrites(int pin, double value);
       unsigned long timemillis();
   };
