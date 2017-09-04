@@ -12,7 +12,7 @@ namespace XbeeSystem {
       void serial();
       void digitalWrites(int pin, bool high_voltage);
       void analogWrites(int pin, double value);
-      unsigned long millis();
+      unsigned long timemillis();
   };
 
 }

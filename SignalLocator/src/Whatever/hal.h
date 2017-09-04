@@ -9,7 +9,7 @@ namespace XbeeSystem {
       virtual void digitalWrites(int pin, bool high_voltage);
       virtual void serial();
 
-      virtual unsigned long millis();
+      virtual unsigned long timemillis();
   };
 
 }

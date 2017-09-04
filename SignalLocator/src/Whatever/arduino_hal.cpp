@@ -33,7 +33,10 @@ using namespace XbeeSystem;
     analogWrite(pin, value);
   }
 
-  unsigned long ArduinoHal::millis() {
-    return millis();
+  unsigned long ArduinoHal::timemillis() {
+    unsigned long mils = millis();
+    // Serial.println("Mils");
+    // Serial.print(mils);
+    return mils;
   }
 // }

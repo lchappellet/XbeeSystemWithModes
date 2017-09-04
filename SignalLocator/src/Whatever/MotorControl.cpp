@@ -47,20 +47,27 @@ void CalibrateMotor180(){
 
 double MotorControl::controlpid(double targetDestination){
 
+  Serial.println("About to read encoder:");
  double encoderValue = encoder->read_encoder();
+  Serial.println(encoderValue);
  double  pidControlValue= 0;
 
  //How long since we last calculated
- unsigned long timeNow = hal_->millis();
+ unsigned long timeNow = hal_->timemillis();
+ Serial.println("Got time now");
  double deltaTime = (double)(timeNow - previousTime);
  //Compute all the working error variables
+  Serial.println("Calculating error...");
  double error = targetDestination - encoderValue;
  errSum += (error * deltaTime);
+  Serial.println("Calculating dErr error...");
 
 double dErr = (error - lastErr) / deltaTime;
 
  /*Compute PID Output*/
  pidControlValue = kp * error + ki * errSum + kd * dErr;
+ Serial.print("Pid control");
+ Serial.print(pidControlValue);
 
  //Remember some variables for next time
  lastErr = error;
