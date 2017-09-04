@@ -9,18 +9,26 @@
 #define MOTORCONTROL_H_
 
 #include "hal.h"
+// #include "Encoder.h"
+#include "EncoderXbeeSystem.h"
 
 class MotorControl {
 public:
-    MotorControl();
+    MotorControl(XbeeSystem::IHal* hal,
+      Encoder_XBee_system* encoder,
+      int input_pin_1,
+      int input_pin_2,
+      int input_enable_pin);
+
     virtual ~MotorControl();
 
     // arduino setup pins
 	  //motor control variables
-	    const int enA = 12;
-	    const int in1 = 11;
-	    const int in2 = 9;
-    XbeeSystem::IHal* hal_;
+	    int enA = 12;
+	    int in1 = 11;
+	    int in2 = 9;
+      XbeeSystem::IHal* hal_;
+      Encoder_XBee_system* encoder;
 
 
 	 	// Location to move to
@@ -52,7 +60,7 @@ public:
 
 
 	    // functions
-	    double controlpid(double encoderValue, double targetDestination);
+	    double controlpid(double targetDestination);
 	    void move_motor(double pidControlvalue1);
 	    void CalibrateMotor180();
 };

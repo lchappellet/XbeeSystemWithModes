@@ -16,10 +16,24 @@
 #include "arduino_hal.h"
 #include "hal.h"
 
-MotorControl::MotorControl() {
-	// TODO Auto-generated constructor stub
-  // hal_ = dynamic_cast<IHal *> XbeeSystem::ArduinoHal(12, 15);
+// MotorControl::MotorControl() {
+// 	// TODO Auto-generated constructor stub
+//   // hal_ = dynamic_cast<IHal *> XbeeSystem::ArduinoHal(12, 15);
+// }
+
+MotorControl::MotorControl(XbeeSystem::IHal* hal,
+  Encoder_XBee_system* xbee_encoder,
+  int input_pin_1,
+  int input_pin_2,
+  int input_enable_pin)
+{
+  encoder = xbee_encoder;
+  hal_ = hal;
+  in1 = input_pin_1;
+  in2 = input_pin_2;
+  enA = input_enable_pin;
 }
+
 
 MotorControl::~MotorControl() {
 	// TODO Auto-generated destructor stub
@@ -31,14 +45,14 @@ void CalibrateMotor180(){
 	//this is usually done at the beginning when the antenna is turned on.
 }
 
-double MotorControl::controlpid(double encoderValue, double targetDestination){
-//  pidControlValue
+double MotorControl::controlpid(double targetDestination){
+
+ double encoderValue = encoder->read_encoder();
  double  pidControlValue= 0;
 
  //How long since we last calculated
  unsigned long timeNow = hal_->millis();
  double deltaTime = (double)(timeNow - previousTime);
-
  //Compute all the working error variables
  double error = targetDestination - encoderValue;
  errSum += (error * deltaTime);

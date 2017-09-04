@@ -11,15 +11,15 @@ using namespace XbeeSystem;
     //todo nothing
   }
 
-  ArduinoHal::ArduinoHal(int dig_output_pin, int analog_output_pin) {
-    dig_output_pin_ = dig_output_pin;
-    analog_output_pin_ = analog_output_pin;
-  }
+  // ArduinoHal::ArduinoHal(int dig_output_pin, int analog_output_pin) {
+  //   dig_output_pin_ = dig_output_pin;
+  //   analog_output_pin_ = analog_output_pin;
+  // }
 
-  void ArduinoHal::init(int dig_pin, int analog_pin) {
-    dig_output_pin_ = dig_pin;
-    analog_output_pin_ = analog_pin;
-  }
+  // void ArduinoHal::init(int dig_pin, int analog_pin) {
+  //   dig_output_pin_ = dig_pin;
+  //   analog_output_pin_ = analog_pin;
+  // }
 
   void ArduinoHal::digitalWrites(int pin, bool high_voltage) {
     digitalWrite(pin, high_voltage);

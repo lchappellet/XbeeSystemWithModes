@@ -12,14 +12,14 @@
 
 class Encoder_XBee_system {
 public:
-	Encoder_XBee_system();
+	Encoder_XBee_system(Encoder* encoder);
 	virtual ~Encoder_XBee_system();
 
   double read_encoder();
 
   double cartCurrent = 0;
   double currentPos = 0;
-  
+
 private:
   Encoder* myEnc;// = Encoder(5, 5);
 };
