@@ -9,9 +9,9 @@ namespace XbeeSystem {
     public:
       ArduinoHal();
       void init(int dig_pin, int analog_pin);
-      void serial();
+      void Serials();
       void digitalWrites(int pin, bool high_voltage);
-      void digitalReads(int readpin);
+      bool digitalReads(int readpin);
       void analogWrites(int pin, double value);
       unsigned long timemillis();
   };

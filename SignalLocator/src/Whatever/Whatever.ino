@@ -6,7 +6,7 @@
 #include "MotorControl.h"
 #include <Encoder.h>
 #include "EncoderXBeeSystem.h"
-
+#include <avr/wdt.h> //watchdog reset
 using namespace XbeeSystem;
 
 const int DIG_IN_PIN = 11;
@@ -44,7 +44,7 @@ void loop() {
   // lastEncoder = xbee_encoder.read_encoder();
   // Serial.print();
 
-  
+
   wdt_reset();  // VERY IMPORTANT this prevents the watchdog from tripping.
                 // If the watchdog does trip the arduino will reset. 
                 // There is 2 seconds until wdt_reset(); needs to be run or the watchdog will trip.

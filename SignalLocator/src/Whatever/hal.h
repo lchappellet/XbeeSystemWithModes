@@ -7,8 +7,8 @@ namespace XbeeSystem {
     public:
       virtual void analogWrites(int pin, double value);
       virtual void digitalWrites(int pin, bool high_voltage);
-      virtual void serial();
-
+      virtual void Serials();
+      virtual bool digitalReads(int readpin);
       virtual unsigned long timemillis();
   };
 

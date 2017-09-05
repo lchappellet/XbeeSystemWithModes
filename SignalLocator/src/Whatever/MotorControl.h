@@ -11,7 +11,7 @@
 #include "hal.h"
 // #include "Encoder.h"
 #include "EncoderXbeeSystem.h"
-
+#include <avr/wdt.h> //watchdog reset
 class MotorControl {
 public:
     MotorControl(XbeeSystem::IHal* hal,

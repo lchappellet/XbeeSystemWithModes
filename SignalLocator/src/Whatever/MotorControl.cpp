@@ -15,7 +15,7 @@
 #include "MotorControl.h"
 #include "arduino_hal.h"
 #include "hal.h"
-
+#include <avr/wdt.h>  //watchdog reset
 // MotorControl::MotorControl() {
 // 	// TODO Auto-generated constructor stub
 //   // hal_ = dynamic_cast<IHal *> XbeeSystem::ArduinoHal(12, 15);
@@ -67,8 +67,7 @@ void MotorControl::CalibrateMotorZeroPosition(){
        watchdogSetup();
 
 
-     
-    if(hal_->digitalRead(ZeroLocCalPin) != HIGHs){
+    if(hal_->digitalReads(ZeroLocCalPin) != HIGHs){
             while(zerosystem){
                 //*** tell the system watchdog to reset
                 if(hal_->digitalReads(ZeroLocCalPin) == HIGHs){
@@ -76,6 +75,7 @@ void MotorControl::CalibrateMotorZeroPosition(){
                   zerosystem = false; // sets zerosystem to false so that while loop will not start another loop.
                   delay(3000); //this gets whole arduino system to reset by not resting the watchdog timer before 2 seconds.
                   }
+
 
                 else{
                     wdt_reset();

@@ -25,7 +25,7 @@ using namespace XbeeSystem;
     digitalWrite(pin, high_voltage);
   }
 
-  void ArduinoHal::digitalReads(int readpin){
+  bool ArduinoHal::digitalReads(int readpin){
     digitalRead(readpin);
   }
 
