@@ -10,10 +10,11 @@
 
 #include <Encoder.h>
 
+
 class Encoder_XBee_system {
 public:
 	  //Encoder Object
-  Encoder& myEnc;
+  Encoder myEnc = Encoder(5, 6);
 
 	double cartCurrent[0];
 	double currentPos = 0;

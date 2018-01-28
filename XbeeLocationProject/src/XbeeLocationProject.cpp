@@ -1,6 +1,6 @@
 //============================================================================
 // Name        : XbeeLocationProject.cpp
-// Author      : 
+// Author      :
 // Version     :
 // Copyright   : Your copyright notice
 // Description : Hello World in C++, Ansi-style
@@ -116,14 +116,13 @@
      float approxDistanceXbee = 0.0;
      float currentApproxDistance = 0.0;
 
-
+//MODES VARIABLES.
     //Mode 2 variables
     const int Mode2Switch = 4; //*** Need to hook this up with a switch
     //void convertAngle();
     void Mode2(); // Creates Prototype at the beginning of code
 
 //SCAN ARRAY CODE
-// SoftwareSerial ***Not being used
 
     #define ssRX 2
     #define ssTX 3

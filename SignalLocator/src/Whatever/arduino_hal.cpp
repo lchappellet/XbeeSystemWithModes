@@ -6,4 +6,12 @@ namespace XbeeSystem {
   void digitalWrite(int pin, bool high_voltage) {
 
   }
+
+  void serial(){
+
+  }
+
+//    void arduino_hal::Serial.print(){
+
+//    }
 }

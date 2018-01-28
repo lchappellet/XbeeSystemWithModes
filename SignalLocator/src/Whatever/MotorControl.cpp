@@ -11,7 +11,7 @@
  *
  */
 #include "MotorControl.h"
-#include <Arduino.h>
+#include "Arduino.h"
 
 MotorControl::MotorControl() {
 	// TODO Auto-generated constructor stub
@@ -27,8 +27,9 @@ void CalibrateMotor180(){
 	//this is usually done at the beginning when the antenna is turned on.
 }
 
-double MotorControl::controlpid(double encoderValue, double targetDestination){
+double MotorControl::controlpid(double targetDestination){
 //  pidControlValue
+
  double  pidControlValue= 0;
 
  //How long since we last calculated
@@ -36,7 +37,7 @@ double MotorControl::controlpid(double encoderValue, double targetDestination){
  double deltaTime = (double)(timeNow - previousTime);
 
  //Compute all the working error variables
- double error = targetDestination - encoderValue;
+ double error = targetDestination - encoder.read_encoder();
  errSum += (error * deltaTime);
 
 double dErr = (error - lastErr) / deltaTime;
@@ -96,4 +97,3 @@ analogWrite(enA, abs(pidControlvalue1));
 
 return;
 }
-

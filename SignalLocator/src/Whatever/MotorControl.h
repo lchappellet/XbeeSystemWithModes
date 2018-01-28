@@ -8,6 +8,8 @@
 #ifndef MOTORCONTROL_H_
 #define MOTORCONTROL_H_
 
+#include "EncoderXBeesystem.h"
+
 class MotorControl {
 public:
     // arduino setup pins
@@ -20,9 +22,11 @@ public:
 	 	// Location to move to
 	 	double targetDestination =0;
 
+			// set encoder object
+			Encoder_XBee_system encoder;
 
 	    //Current Position
-	    double encoderValue = 0;
+	    //double encoderValue = 0;
 
 	    //Encoder position variable
 	    long encoderPosPrev  = -999;
@@ -46,7 +50,7 @@ public:
 
 
 	    // functions
-	    double controlpid(double encoderValue, double targetDestination);
+	    double controlpid(double targetDestination);
 	    void move_motor(double pidControlvalue1);
 	    void CalibrateMotor180();
 	    //

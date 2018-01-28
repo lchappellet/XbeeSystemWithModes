@@ -9,7 +9,7 @@
 #include <Encoder.h>
 
 Encoder_XBee_system::Encoder_XBee_system() {
-  myEnc = Encoder(5, 5);
+  myEnc = Encoder(5, 6);
 	// TODO Auto-generated constructor stub
 
 }
@@ -20,7 +20,7 @@ double Encoder_XBee_system::read_encoder(){
 	//cartCurrent[0] = (.147*myEnc.read()); // gives value in degrees of where system is located for 437rpm motor
 	// cartCurrent[0] = (0.002667*myEnc.read()); // gives value in degrees of where system is located for 12rpm motor using OD(outerdiameters)
 	cartCurrent[0] = (0.002476 * myEnc.read()); // gives value in degrees of where system is located for 12rpm motor using PD(Pitch diameters)//Best***
-	
+
 	//Serial.println("Encoders");
 	//Serial.println(currentPos);
 	//Serial.println(myEnc.read());
@@ -33,4 +33,3 @@ double Encoder_XBee_system::read_encoder(){
 Encoder_XBee_system::~Encoder_XBee_system() {
 	// TODO Auto-generated destructor stub
 }
-

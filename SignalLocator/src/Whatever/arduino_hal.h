@@ -12,6 +12,7 @@ namespace XbeeSystem {
       void serial();
       void digitalWrite(bool high_voltage);
       void analogWrite(double value);
+  //    void Serial.print();
 
     private:
       int dig_output_pin_;
