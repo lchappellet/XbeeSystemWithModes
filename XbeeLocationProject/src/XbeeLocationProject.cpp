@@ -802,7 +802,7 @@ if(Num >=0 ){                               ////////// *****************not fini
 
 
 void GPS_Calc(){
-  wdt_reset();
+  wdt_reset(); //reset the watchdog timer.
    //Serial.println("Mode2 running");
    // if millis() or timer wraps around, we'll just reset it
   if (timer > millis())  timer = millis();

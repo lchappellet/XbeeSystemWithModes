@@ -9,7 +9,7 @@
 #include <Encoder.h>
 
 Encoder_XBee_system::Encoder_XBee_system() {
-  myEnc = Encoder(5, 6);
+  // myEnc = Encoder(5, 6);
 	// TODO Auto-generated constructor stub
 
 }

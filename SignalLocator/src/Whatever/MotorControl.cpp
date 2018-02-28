@@ -11,7 +11,7 @@
  *
  */
 #include "MotorControl.h"
-#include "Arduino.h"
+
 
 MotorControl::MotorControl() {
 	// TODO Auto-generated constructor stub

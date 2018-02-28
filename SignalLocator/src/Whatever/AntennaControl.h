@@ -44,13 +44,16 @@ public:
   //set the object encoder so that we can know our current location of the encoder
   // This will help us to know we have reached close enough to our destination.
   Encoder_XBee_system encoder;
-  // create the arduino object below so I can use serial and other functions
+// create the arduino object below so I can use serial and other functions
 //  ArduinoHal arduino;
 
   void moveTo360Degrees();
+  void moveToZeroDegrees();
+  void honeInRight();
+  void honeInLeft();
 
 
-  int zero = 0;
+  int zero = 0;   // we need to CHANGE this value
   int threeFourty = 340;
 
 

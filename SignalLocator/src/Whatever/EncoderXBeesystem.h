@@ -14,7 +14,7 @@
 class Encoder_XBee_system {
 public:
 	  //Encoder Object
-  Encoder myEnc = Encoder(5, 6);
+  Encoder myEnc = Encoder(18, 19);
 
 	double cartCurrent[0];
 	double currentPos = 0;

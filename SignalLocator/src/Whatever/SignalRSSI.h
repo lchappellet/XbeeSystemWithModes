@@ -3,6 +3,7 @@
 
 #include "Arduino.h"
 #include <vector>
+#include
 
 class SignalXBee {
 public:
@@ -20,6 +21,13 @@ public:
 	    RemoteAtCommandRequest racrq = RemoteAtCommandRequest(addr64, d0Cmd);
 
 
+      std::vector<double>storeRSSI(10) = 0; //creates vector a that has 10 elements for rssiSignalStregth
+      std::vector<double>storeEncoder(10)= 0; //creates vector b for the correlating encoderValueNow
+
+      // call upon encoder function to take an encoder reading as we read the rssi values
+      Encoder_XBee_system encoderxbeesystem;
+
+
 public:
   // Read RSSI Signal
   int readSignalStrenth();
@@ -28,13 +36,15 @@ public:
 
   void readSignal(); // read a return signal using the XBEE
 
-  void signalStoreData();
+  void signalStoreData(int rssiSignalStrength, double encoderValueNow);
 
   void signalRetrieveData();
 
   void EMAsignalData();
 
-  void storedEMAData();
+  void storedEMAData(); //try to use this somehow.
+
+  double strongestSignalEncoderDirection();
   //Things I Need
       //Store data
       //Return Average of data
